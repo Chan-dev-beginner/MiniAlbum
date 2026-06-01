@@ -34,4 +34,31 @@ lightbox.addEventListener('click', (event) => {
   }
 });
 
-attachCardListeners();
+// Load manifest generated at build time
+fetch('assets.json')
+  .then((r) => r.json())
+  .then((files) => {
+    files.forEach((file) => {
+      const url = `assets/${encodeURIComponent(file)}`;
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.dataset.name = file;
+      card.dataset.src = url;
+
+      const top = document.createElement('div');
+      top.className = 'card-top';
+      card.appendChild(top);
+
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = file;
+      card.appendChild(img);
+
+      gallery.appendChild(card);
+    });
+    attachCardListeners();
+  })
+  .catch(() => {
+    // If manifest missing, fail silently; site may have hardcoded items
+    attachCardListeners();
+  });

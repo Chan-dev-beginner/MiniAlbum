@@ -3,7 +3,8 @@ Dreamy Mini Album
 This repository serves a static album from the `assets/` folder.
 
 How it works:
-- `index.html` shows the current images in `assets/`.
-- To add more images on Vercel: add files to `assets/` in your repository and redeploy (Vercel will serve static files).
+- At build time the script `scripts/generate-manifest.js` produces `assets.json` containing an array of image filenames from `assets/`.
+- `index.html` + `script.js` load `assets.json` and render the gallery dynamically.
+- To publish on Vercel: add or remove files in `assets/`, then push — Vercel runs `npm run build` which generates `assets.json` automatically before serving the site.
 
-If you want server-side uploads (save files without redeploy), you need a backend or third-party storage (Cloudinary, S3). I can help integrate that if you want.
+If you want runtime uploads (save files without redeploy), you need external storage (Cloudinary, S3, Supabase). I can add that integration if you like.
