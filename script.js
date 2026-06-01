@@ -1,64 +1,44 @@
-const gallery = document.getElementById('gallery');
-const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightboxImage');
-const lightboxCaption = document.getElementById('lightboxCaption');
-const lightboxClose = document.getElementById('lightboxClose');
+const cards = document.querySelectorAll('.animate-card');
 
-function openLightbox(src, caption) {
-  lightboxImage.src = src;
-  lightboxImage.alt = caption;
-  lightboxCaption.textContent = caption;
-  lightbox.classList.add('open');
-  lightbox.setAttribute('aria-hidden', 'false');
-}
-
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  lightbox.setAttribute('aria-hidden', 'true');
-  lightboxImage.src = '';
-}
-
-function attachCardListeners() {
-  const cards = gallery.querySelectorAll('.card');
-  cards.forEach((card) => {
-    card.addEventListener('click', () => {
-      openLightbox(card.dataset.src, card.dataset.name);
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  });
+  },
+  { threshold: 0.2 }
+);
+
+function updateCardMotion(event) {
+  const card = event.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const x = (event.clientX - rect.left) / rect.width - 0.5;
+  const y = (event.clientY - rect.top) / rect.height - 0.5;
+  const rotateX = y * 12;
+  const rotateY = x * 12;
+
+  card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
 }
 
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', (event) => {
-  if (event.target === lightbox) {
-    closeLightbox();
-  }
+function resetCardMotion(event) {
+  const card = event.currentTarget;
+  card.style.transform = '';
+}
+
+cards.forEach((card) => {
+  revealObserver.observe(card);
+  card.addEventListener('pointermove', updateCardMotion);
+  card.addEventListener('pointerleave', resetCardMotion);
+  card.addEventListener('pointercancel', resetCardMotion);
 });
 
-// Load manifest generated at build time
-fetch('assets.json')
-  .then((r) => r.json())
-  .then((files) => {
-    files.forEach((file) => {
-      const url = `assets/${encodeURIComponent(file)}`;
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.dataset.name = file;
-      card.dataset.src = url;
-
-      const top = document.createElement('div');
-      top.className = 'card-top';
-      card.appendChild(top);
-
-      const img = document.createElement('img');
-      img.src = url;
-      img.alt = file;
-      card.appendChild(img);
-
-      gallery.appendChild(card);
-    });
-    attachCardListeners();
-  })
-  .catch(() => {
-    // If manifest missing, fail silently; site may have hardcoded items
-    attachCardListeners();
-  });
+window.addEventListener('mousemove', (event) => {
+  document.documentElement.style.setProperty(
+    '--pointer-x', `${(event.clientX / window.innerWidth) * 100}%`
+  );
+  document.documentElement.style.setProperty(
+    '--pointer-y', `${(event.clientY / window.innerHeight) * 100}%`
+  );
+});

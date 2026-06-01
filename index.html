@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="./">
   <title>Dreamy Mini Album</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="page-shell">
     <header class="hero">
-      <div class="hero-decor"></div>
-      <div class="hero-content">
+      <div class="hero-glow"></div>
+      <div class="hero-copy">
         <span class="eyebrow">Photo Diary</span>
         <h1>Dreamy Mini Album</h1>
-        <p>These photos are served from the <strong>assets</strong> folder. To add images in the future, add files to the `assets/` folder and redeploy.</p>
+        <p>A static local gallery with lightweight motion and elegant hover effects.</p>
       </div>
     </header>
 
@@ -21,13 +22,40 @@
       <section class="gallery-section">
         <div class="gallery-header">
           <div>
-            <h2>Your Album</h2>
-            <p>Tap a photo to view it larger.</p>
+            <h2>Captured Moments</h2>
+            <p>All images are served directly from the local <code>assets/</code> folder.</p>
           </div>
         </div>
 
-        <div class="gallery-grid" id="gallery">
-          <!-- Gallery will be populated from assets.json at build time -->
+        <div class="gallery-grid">
+          <article class="card animate-card">
+            <img src="assets/706524626_1042632668262846_2647405950779677936_n.jpg" alt="Photo 1">
+            <div class="card-label">Morning glow</div>
+          </article>
+          <article class="card animate-card">
+            <img src="assets/708832709_980115181653123_8896712598420439711_n.jpg" alt="Photo 2">
+            <div class="card-label">Dreamy shadows</div>
+          </article>
+          <article class="card animate-card">
+            <img src="assets/709154504_991739513460138_2147692298926069108_n.jpg" alt="Photo 3">
+            <div class="card-label">Soft sunlight</div>
+          </article>
+          <article class="card animate-card">
+            <img src="assets/709225538_986149994168893_1090559585148990177_n.jpg" alt="Photo 4">
+            <div class="card-label">Urban details</div>
+          </article>
+          <article class="card animate-card">
+            <img src="assets/709385479_1495764098680934_7110237151561007517_n.jpg" alt="Photo 5">
+            <div class="card-label">Quiet perspective</div>
+          </article>
+          <article class="card animate-card">
+            <img src="assets/709762388_857358940763964_3443983487869380164_n.jpg" alt="Photo 6">
+            <div class="card-label">Warm tone</div>
+          </article>
+          <article class="card animate-card">
+            <img src="assets/709782226_970590528921347_3500781417889448694_n.jpg" alt="Photo 7">
+            <div class="card-label">Evening calm</div>
+          </article>
         </div>
       </section>
     </main>
@@ -35,12 +63,6 @@
     <footer>
       <p>ICT-CSS 2023-2024</p>
     </footer>
-
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-      <button class="close-lightbox" id="lightboxClose" aria-label="Close preview">×</button>
-      <img id="lightboxImage" src="" alt="Preview image">
-      <p id="lightboxCaption"></p>
-    </div>
   </div>
 
   <script src="script.js"></script>
