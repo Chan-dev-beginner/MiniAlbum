@@ -1,0 +1,331 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #fde8ff 0%, transparent 35%),
+              radial-gradient(circle at top right, #dbeafe 0%, transparent 25%),
+              linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+  color: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.page-shell {
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  padding: 4rem 1.5rem 3rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -120px;
+  width: 320px;
+  height: 320px;
+  background: rgba(99, 102, 241, 0.16);
+  filter: blur(80px);
+  border-radius: 50%;
+}
+
+.hero-decor {
+  position: absolute;
+  left: -80px;
+  bottom: -40px;
+  width: 260px;
+  height: 260px;
+  background: rgba(236, 72, 153, 0.14);
+  filter: blur(70px);
+  border-radius: 50%;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 2rem 2.5rem;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 32px 100px rgba(15, 23, 42, 0.1);
+  backdrop-filter: blur(14px);
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.1);
+  color: #4338ca;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.75rem, 4.5vw, 4.5rem);
+  line-height: 0.96;
+  color: #111827;
+}
+
+.hero p {
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+  color: #475569;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.upload-area {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  padding: 1.25rem 1rem 1.5rem;
+  border-radius: 22px;
+  border: 1px dashed rgba(99, 102, 241, 0.45);
+  background: rgba(99, 102, 241, 0.05);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.upload-area.is-dragover {
+  border-color: #7c3aed;
+  background: rgba(99, 102, 241, 0.14);
+}
+
+.upload-message {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  font-weight: 600;
+  text-align: center;
+}
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.7rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.upload-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 50px rgba(99, 102, 241, 0.2);
+}
+
+.upload-button input {
+  display: none;
+}
+
+.upload-hint {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.98rem;
+}
+
+main {
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.gallery-section {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.gallery-header h2 {
+  margin: 0;
+  font-size: 1.9rem;
+  color: #111827;
+}
+
+.gallery-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
+  box-shadow: 0 25px 55px rgba(15, 23, 42, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 35px 70px rgba(15, 23, 42, 0.16);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-top {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.remove-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.65);
+  color: white;
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.remove-button:hover {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.card::after {
+  content: attr(data-name);
+  position: absolute;
+  inset: auto 0 0;
+  padding: 1rem 1rem 1.2rem;
+  background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.82));
+  color: white;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empty-state {
+  margin: 2rem auto 0;
+  max-width: 640px;
+  text-align: center;
+  color: #475569;
+  font-size: 1rem;
+  padding: 1.5rem 1.25rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 1.5rem 2rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 24px;
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.3);
+}
+
+.lightbox p {
+  margin: 1rem 0 0;
+  color: #e2e8f0;
+  text-align: center;
+  font-size: 0.98rem;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  font-size: 1.65rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 3rem 1rem 2rem;
+  }
+  .hero-content {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+  .hero h1 {
+    font-size: 2.75rem;
+  }
+  .gallery-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
