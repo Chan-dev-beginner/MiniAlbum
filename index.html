@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dreamy Mini Album</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-decor"></div>
+      <div class="hero-content">
+        <span class="eyebrow">Photo Diary</span>
+        <h1>Dreamy Mini Album</h1>
+        <p>These photos are served from the <strong>assets</strong> folder. To add images in the future, add files to the `assets/` folder and redeploy.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="gallery-section">
+        <div class="gallery-header">
+          <div>
+            <h2>Your Album</h2>
+            <p>Tap a photo to view it larger.</p>
+          </div>
+        </div>
+
+        <div class="gallery-grid" id="gallery">
+          <!-- Gallery will be populated from assets.json at build time -->
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>ICT-CSS 2023-2024</p>
+    </footer>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="close-lightbox" id="lightboxClose" aria-label="Close preview">×</button>
+      <img id="lightboxImage" src="" alt="Preview image">
+      <p id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
