@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dreamy Mini Album</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-decor"></div>
+      <div class="hero-content">
+        <span class="eyebrow">Photo Diary</span>
+        <h1>Dreamy Mini Album</h1>
+        <p>These photos are served from the <strong>assets</strong> folder. To add images in the future, add files to the `assets/` folder and redeploy.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="gallery-section">
+        <div class="gallery-header">
+          <div>
+            <h2>Your Album</h2>
+            <p>Tap a photo to view it larger.</p>
+          </div>
+        </div>
+
+        <div class="gallery-grid" id="gallery">
+          <!-- Gallery items -->
+          <div class="card" data-name="706524626_1042632668262846_2647405950779677936_n.jpg" data-src="assets/706524626_1042632668262846_2647405950779677936_n.jpg">
+            <div class="card-top"></div>
+            <img src="assets/706524626_1042632668262846_2647405950779677936_n.jpg" alt="706524626_1042632668262846_2647405950779677936_n.jpg">
+          </div>
+
+          <div class="card" data-name="708832709_980115181653123_8896712598420439711_n.jpg" data-src="assets/708832709_980115181653123_8896712598420439711_n.jpg">
+            <div class="card-top"></div>
+            <img src="assets/708832709_980115181653123_8896712598420439711_n.jpg" alt="708832709_980115181653123_8896712598420439711_n.jpg">
+          </div>
+
+          <div class="card" data-name="709154504_991739513460138_2147692298926069108_n.jpg" data-src="assets/709154504_991739513460138_2147692298926069108_n.jpg">
+            <div class="card-top"></div>
+            <img src="assets/709154504_991739513460138_2147692298926069108_n.jpg" alt="709154504_991739513460138_2147692298926069108_n.jpg">
+          </div>
+
+          <div class="card" data-name="709225538_986149994168893_1090559585148990177_n.jpg" data-src="assets/709225538_986149994168893_1090559585148990177_n.jpg">
+            <div class="card-top"></div>
+            <img src="assets/709225538_986149994168893_1090559585148990177_n.jpg" alt="709225538_986149994168893_1090559585148990177_n.jpg">
+          </div>
+
+          <div class="card" data-name="709385479_1495764098680934_7110237151561007517_n.jpg" data-src="assets/709385479_1495764098680934_7110237151561007517_n.jpg">
+            <div class="card-top"></div>
+            <img src="assets/709385479_1495764098680934_7110237151561007517_n.jpg" alt="709385479_1495764098680934_7110237151561007517_n.jpg">
+          </div>
+
+          <div class="card" data-name="709762388_857358940763964_3443983487869380164_n.jpg" data-src="assets/709762388_857358940763964_3443983487869380164_n.jpg">
+            <div class="card-top"></div>
+            <img src="assets/709762388_857358940763964_3443983487869380164_n.jpg" alt="709762388_857358940763964_3443983487869380164_n.jpg">
+          </div>
+
+          <div class="card" data-name="709782226_970590528921347_3500781417889448694_n.jpg" data-src="assets/709782226_970590528921347_3500781417889448694_n.jpg">
+            <div class="card-top"></div>
+            <img src="assets/709782226_970590528921347_3500781417889448694_n.jpg" alt="709782226_970590528921347_3500781417889448694_n.jpg">
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Dreamy Mini Album • soft, simple, sharing-ready</p>
+    </footer>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="close-lightbox" id="lightboxClose" aria-label="Close preview">×</button>
+      <img id="lightboxImage" src="" alt="Preview image">
+      <p id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
